@@ -1,2 +1,3 @@
 .venv
 dags/simple_hello_world.py
+logs

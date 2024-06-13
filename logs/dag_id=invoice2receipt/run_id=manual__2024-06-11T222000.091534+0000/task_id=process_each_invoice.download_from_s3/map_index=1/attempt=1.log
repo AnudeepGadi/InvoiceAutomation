@@ -1,0 +1,38 @@
+[2024-06-11T22:20:04.876+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-11T22:20:04.899+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: invoice2receipt.process_each_invoice.download_from_s3 manual__2024-06-11T22:20:00.091534+00:00 map_index=1 [queued]>
+[2024-06-11T22:20:04.910+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: invoice2receipt.process_each_invoice.download_from_s3 manual__2024-06-11T22:20:00.091534+00:00 map_index=1 [queued]>
+[2024-06-11T22:20:04.911+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-06-11T22:20:04.941+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): process_each_invoice.download_from_s3> on 2024-06-11 22:20:00.091534+00:00
+[2024-06-11T22:20:04.945+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=1327) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-11T22:20:04.947+0000] {standard_task_runner.py:63} INFO - Started process 1328 to run task
+[2024-06-11T22:20:04.947+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'invoice2receipt', 'process_each_invoice.download_from_s3', 'manual__2024-06-11T22:20:00.091534+00:00', '--job-id', '239', '--raw', '--subdir', 'DAGS_FOLDER/invoice2receipt.py', '--cfg-path', '/tmp/tmp379523ev', '--map-index', '1']
+[2024-06-11T22:20:04.949+0000] {standard_task_runner.py:91} INFO - Job 239: Subtask process_each_invoice.download_from_s3
+[2024-06-11T22:20:05.061+0000] {task_command.py:426} INFO - Running <TaskInstance: invoice2receipt.process_each_invoice.download_from_s3 manual__2024-06-11T22:20:00.091534+00:00 map_index=1 [running]> on host 678b3b027d57
+[2024-06-11T22:20:05.146+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Anudeep' AIRFLOW_CTX_DAG_ID='invoice2receipt' AIRFLOW_CTX_TASK_ID='process_each_invoice.download_from_s3' AIRFLOW_CTX_EXECUTION_DATE='2024-06-11T22:20:00.091534+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-11T22:20:00.091534+00:00'
+[2024-06-11T22:20:05.148+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-11T22:20:05.149+0000] {s3.py:1387} INFO - Downloading source S3 file from Bucket invoices with path sample2.json
+[2024-06-11T22:20:05.157+0000] {base.py:84} INFO - Using connection ID 'AWS_connection' for task execution.
+[2024-06-11T22:20:05.158+0000] {connection_wrapper.py:384} INFO - AWS Connection (conn_id='AWS_connection', conn_type='aws') credentials retrieved from login and password.
+[2024-06-11T22:20:05.264+0000] {logging_mixin.py:188} INFO - /tmp/***_tmp_aowdotp_
+[2024-06-11T22:20:05.264+0000] {logging_mixin.py:188} INFO - {
+   "firstName": "Joe",
+   "lastName": "Jackson",
+   "gender": "male",
+   "age": 28,
+   "address": {
+       "streetAddress": "101",
+       "city": "San Diego",
+       "state": "CA"
+   },
+   "phoneNumbers": [
+       { "type": "home", "number": "7349282382" }
+   ]
+}
+[2024-06-11T22:20:05.265+0000] {python.py:237} INFO - Done. Returned value was: /tmp/***_tmp_aowdotp_
+[2024-06-11T22:20:05.266+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-11T22:20:05.284+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=invoice2receipt, task_id=process_each_invoice.download_from_s3, run_id=manual__2024-06-11T22:20:00.091534+00:00, map_index=1, execution_date=20240611T222000, start_date=20240611T222004, end_date=20240611T222005
+[2024-06-11T22:20:05.323+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-06-11T22:20:05.349+0000] {taskinstance.py:3503} INFO - 2 downstream tasks scheduled from follow-on schedule check
+[2024-06-11T22:20:05.353+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,22 @@
+[2024-06-11T11:18:29.480+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-11T11:18:29.504+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: hello_word.process_file_length manual__2024-06-11T11:18:25.474004+00:00 map_index=1 [queued]>
+[2024-06-11T11:18:29.512+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: hello_word.process_file_length manual__2024-06-11T11:18:25.474004+00:00 map_index=1 [queued]>
+[2024-06-11T11:18:29.513+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-06-11T11:18:29.526+0000] {taskinstance.py:2330} INFO - Executing <Mapped(PythonOperator): process_file_length> on 2024-06-11 11:18:25.474004+00:00
+[2024-06-11T11:18:29.531+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=6087) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-11T11:18:29.532+0000] {standard_task_runner.py:63} INFO - Started process 6089 to run task
+[2024-06-11T11:18:29.532+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'hello_word', 'process_file_length', 'manual__2024-06-11T11:18:25.474004+00:00', '--job-id', '135', '--raw', '--subdir', 'DAGS_FOLDER/simple_hello_world.py', '--cfg-path', '/tmp/tmpl77whrmm', '--map-index', '1']
+[2024-06-11T11:18:29.533+0000] {standard_task_runner.py:91} INFO - Job 135: Subtask process_file_length
+[2024-06-11T11:18:29.644+0000] {task_command.py:426} INFO - Running <TaskInstance: hello_word.process_file_length manual__2024-06-11T11:18:25.474004+00:00 map_index=1 [running]> on host 678b3b027d57
+[2024-06-11T11:18:29.732+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Anudeep' AIRFLOW_CTX_DAG_ID='hello_word' AIRFLOW_CTX_TASK_ID='process_file_length' AIRFLOW_CTX_EXECUTION_DATE='2024-06-11T11:18:25.474004+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-11T11:18:25.474004+00:00'
+[2024-06-11T11:18:29.790+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-11T11:18:29.812+0000] {logging_mixin.py:188} INFO - ['{\n   "firstName": "Joe",\n   "lastName": "Jackson",\n   "gender": "male",\n   "age": 28,\n   "address": {\n       "streetAddress": "101",\n       "city": "San Diego",\n       "state": "CA"\n   },\n   "phoneNumbers": [\n       { "type": "home", "number": "7349282382" }\n   ]\n}']
+[2024-06-11T11:18:29.813+0000] {logging_mixin.py:188} INFO - 1
+[2024-06-11T11:18:29.813+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-06-11T11:18:29.814+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-11T11:18:29.821+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=hello_word, task_id=process_file_length, run_id=manual__2024-06-11T11:18:25.474004+00:00, map_index=1, execution_date=20240611T111825, start_date=20240611T111829, end_date=20240611T111829
+[2024-06-11T11:18:29.867+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-06-11T11:18:29.881+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-11T11:18:29.894+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

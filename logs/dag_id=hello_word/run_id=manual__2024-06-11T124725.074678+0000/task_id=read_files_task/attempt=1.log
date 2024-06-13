@@ -1,0 +1,21 @@
+[2024-06-11T12:47:26.237+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-11T12:47:26.259+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: hello_word.read_files_task manual__2024-06-11T12:47:25.074678+00:00 [queued]>
+[2024-06-11T12:47:26.265+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: hello_word.read_files_task manual__2024-06-11T12:47:25.074678+00:00 [queued]>
+[2024-06-11T12:47:26.266+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-06-11T12:47:26.278+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): read_files_task> on 2024-06-11 12:47:25.074678+00:00
+[2024-06-11T12:47:26.284+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=7285) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-11T12:47:26.285+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'hello_word', 'read_files_task', 'manual__2024-06-11T12:47:25.074678+00:00', '--job-id', '149', '--raw', '--subdir', 'DAGS_FOLDER/simple_hello_world.py', '--cfg-path', '/tmp/tmp_jb8qm5z']
+[2024-06-11T12:47:26.285+0000] {standard_task_runner.py:63} INFO - Started process 7286 to run task
+[2024-06-11T12:47:26.286+0000] {standard_task_runner.py:91} INFO - Job 149: Subtask read_files_task
+[2024-06-11T12:47:26.321+0000] {task_command.py:426} INFO - Running <TaskInstance: hello_word.read_files_task manual__2024-06-11T12:47:25.074678+00:00 [running]> on host 678b3b027d57
+[2024-06-11T12:47:26.389+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Anudeep' AIRFLOW_CTX_DAG_ID='hello_word' AIRFLOW_CTX_TASK_ID='read_files_task' AIRFLOW_CTX_EXECUTION_DATE='2024-06-11T12:47:25.074678+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-11T12:47:25.074678+00:00'
+[2024-06-11T12:47:26.391+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-11T12:47:26.398+0000] {base.py:84} INFO - Using connection ID 'invoices' for task execution.
+[2024-06-11T12:47:26.401+0000] {python.py:237} INFO - Done. Returned value was: [['/opt/***/dags/invoices/sample1.json'], ['/opt/***/dags/invoices/sample2.json']]
+[2024-06-11T12:47:26.402+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-11T12:47:26.427+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=hello_word, task_id=read_files_task, run_id=manual__2024-06-11T12:47:25.074678+00:00, execution_date=20240611T124725, start_date=20240611T124726, end_date=20240611T124726
+[2024-06-11T12:47:26.460+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-06-11T12:47:26.521+0000] {taskinstance.py:3503} INFO - 2 downstream tasks scheduled from follow-on schedule check
+[2024-06-11T12:47:26.527+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,43 @@
+[2024-06-11T03:29:08.193+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-11T03:29:08.213+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: hello_word.read_files_from_path manual__2024-06-11T03:29:05.532698+00:00 [queued]>
+[2024-06-11T03:29:08.221+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: hello_word.read_files_from_path manual__2024-06-11T03:29:05.532698+00:00 [queued]>
+[2024-06-11T03:29:08.222+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-06-11T03:29:08.236+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): read_files_from_path> on 2024-06-11 03:29:05.532698+00:00
+[2024-06-11T03:29:08.242+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=503) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-11T03:29:08.244+0000] {standard_task_runner.py:63} INFO - Started process 504 to run task
+[2024-06-11T03:29:08.243+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'hello_word', 'read_files_from_path', 'manual__2024-06-11T03:29:05.532698+00:00', '--job-id', '60', '--raw', '--subdir', 'DAGS_FOLDER/simple_hello_world.py', '--cfg-path', '/tmp/tmp1w5vktgp']
+[2024-06-11T03:29:08.245+0000] {standard_task_runner.py:91} INFO - Job 60: Subtask read_files_from_path
+[2024-06-11T03:29:08.286+0000] {task_command.py:426} INFO - Running <TaskInstance: hello_word.read_files_from_path manual__2024-06-11T03:29:05.532698+00:00 [running]> on host 678b3b027d57
+[2024-06-11T03:29:08.395+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Anudeep' AIRFLOW_CTX_DAG_ID='hello_word' AIRFLOW_CTX_TASK_ID='read_files_from_path' AIRFLOW_CTX_EXECUTION_DATE='2024-06-11T03:29:05.532698+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-11T03:29:05.532698+00:00'
+[2024-06-11T03:29:08.491+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-11T03:29:08.509+0000] {base.py:84} INFO - Using connection ID 'invoices' for task execution.
+[2024-06-11T03:29:08.513+0000] {logging_mixin.py:188} INFO - ['sample1.json', 'sample2.json', '__init__.py']
+[2024-06-11T03:29:08.514+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-11T03:29:08.515+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/simple_hello_world.py", line 30, in read_files_from_path
+    files = os.listdir(os.path.join(os.getcwd(), hook.get_path()))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/airflow/dags/invoices/'
+[2024-06-11T03:29:08.525+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=hello_word, task_id=read_files_from_path, run_id=manual__2024-06-11T03:29:05.532698+00:00, execution_date=20240611T032905, start_date=20240611T032908, end_date=20240611T032908
+[2024-06-11T03:29:08.538+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 60 for task read_files_from_path ([Errno 2] No such file or directory: '/airflow/dags/invoices/'; 504)
+[2024-06-11T03:29:08.579+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-11T03:29:08.594+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-11T03:29:08.598+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,106 @@
+[2024-06-11T22:18:12.695+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-11T22:18:12.719+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: invoice2receipt.process_each_invoice.download_from_s3 manual__2024-06-11T22:18:09.775955+00:00 map_index=0 [queued]>
+[2024-06-11T22:18:12.732+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: invoice2receipt.process_each_invoice.download_from_s3 manual__2024-06-11T22:18:09.775955+00:00 map_index=0 [queued]>
+[2024-06-11T22:18:12.733+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-06-11T22:18:12.781+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): process_each_invoice.download_from_s3> on 2024-06-11 22:18:09.775955+00:00
+[2024-06-11T22:18:12.787+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=1285) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-11T22:18:12.789+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'invoice2receipt', 'process_each_invoice.download_from_s3', 'manual__2024-06-11T22:18:09.775955+00:00', '--job-id', '232', '--raw', '--subdir', 'DAGS_FOLDER/invoice2receipt.py', '--cfg-path', '/tmp/tmp60d5osdb', '--map-index', '0']
+[2024-06-11T22:18:12.790+0000] {standard_task_runner.py:63} INFO - Started process 1288 to run task
+[2024-06-11T22:18:12.791+0000] {standard_task_runner.py:91} INFO - Job 232: Subtask process_each_invoice.download_from_s3
+[2024-06-11T22:18:12.896+0000] {task_command.py:426} INFO - Running <TaskInstance: invoice2receipt.process_each_invoice.download_from_s3 manual__2024-06-11T22:18:09.775955+00:00 map_index=0 [running]> on host 678b3b027d57
+[2024-06-11T22:18:13.182+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Anudeep' AIRFLOW_CTX_DAG_ID='invoice2receipt' AIRFLOW_CTX_TASK_ID='process_each_invoice.download_from_s3' AIRFLOW_CTX_EXECUTION_DATE='2024-06-11T22:18:09.775955+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-11T22:18:09.775955+00:00'
+[2024-06-11T22:18:13.184+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-11T22:18:13.186+0000] {s3.py:1387} INFO - Downloading source S3 file from Bucket invoices with path sample1.json
+[2024-06-11T22:18:13.198+0000] {base_aws.py:587} WARNING - Unable to find AWS Connection ID 'aws_conn', switching to empty.
+[2024-06-11T22:18:13.209+0000] {base_aws.py:164} INFO - No connection ID provided. Fallback on boto3 credential strategy (region_name=None). See: https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
+[2024-06-11T22:18:13.411+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-11T22:18:13.413+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/invoice2receipt.py", line 29, in download_from_s3
+    file_path = hook.download_file(
+                ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 135, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 89, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 1390, in download_file
+    s3_obj = self.get_key(key, bucket_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 135, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 89, in wrapper
+    return func(*bound_args.args, **bound_args.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/hooks/s3.py", line 948, in get_key
+    obj.load(**sanitize_extra_args())
+  File "/home/airflow/.local/lib/python3.12/site-packages/boto3/resources/factory.py", line 565, in do_action
+    response = action(self, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/boto3/resources/action.py", line 88, in __call__
+    response = getattr(parent.meta.client, operation_name)(*args, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/client.py", line 1001, in _make_api_call
+    http, parsed_response = self._make_request(
+                            ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/client.py", line 1027, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/endpoint.py", line 198, in _send_request
+    request = self.create_request(request_dict, operation_model)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/endpoint.py", line 134, in create_request
+    self._event_emitter.emit(
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+               ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/signers.py", line 105, in handler
+    return self.sign(operation_name, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/signers.py", line 199, in sign
+    auth.add_auth(request)
+  File "/home/airflow/.local/lib/python3.12/site-packages/botocore/auth.py", line 418, in add_auth
+    raise NoCredentialsError()
+botocore.exceptions.NoCredentialsError: Unable to locate credentials
+[2024-06-11T22:18:13.444+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=invoice2receipt, task_id=process_each_invoice.download_from_s3, run_id=manual__2024-06-11T22:18:09.775955+00:00, map_index=0, execution_date=20240611T221809, start_date=20240611T221812, end_date=20240611T221813
+[2024-06-11T22:18:13.486+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 232 for task process_each_invoice.download_from_s3 (Unable to locate credentials; 1288)
+[2024-06-11T22:18:13.529+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-11T22:18:13.576+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-11T22:18:13.607+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

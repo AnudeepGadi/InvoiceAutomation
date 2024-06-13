@@ -1,0 +1,27 @@
+[2024-06-11T05:41:06.523+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-11T05:41:06.540+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: hello_word.read_files_from_path manual__2024-06-11T05:41:06.019070+00:00 [queued]>
+[2024-06-11T05:41:06.545+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: hello_word.read_files_from_path manual__2024-06-11T05:41:06.019070+00:00 [queued]>
+[2024-06-11T05:41:06.557+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-06-11T05:41:06.570+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): read_files_from_path> on 2024-06-11 05:41:06.019070+00:00
+[2024-06-11T05:41:06.591+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=1984) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-11T05:41:06.593+0000] {standard_task_runner.py:63} INFO - Started process 1985 to run task
+[2024-06-11T05:41:06.593+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'hello_word', 'read_files_from_path', 'manual__2024-06-11T05:41:06.019070+00:00', '--job-id', '99', '--raw', '--subdir', 'DAGS_FOLDER/simple_hello_world.py', '--cfg-path', '/tmp/tmp0shl8hjc']
+[2024-06-11T05:41:06.594+0000] {standard_task_runner.py:91} INFO - Job 99: Subtask read_files_from_path
+[2024-06-11T05:41:06.633+0000] {task_command.py:426} INFO - Running <TaskInstance: hello_word.read_files_from_path manual__2024-06-11T05:41:06.019070+00:00 [running]> on host 678b3b027d57
+[2024-06-11T05:41:06.700+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Anudeep' AIRFLOW_CTX_DAG_ID='hello_word' AIRFLOW_CTX_TASK_ID='read_files_from_path' AIRFLOW_CTX_EXECUTION_DATE='2024-06-11T05:41:06.019070+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-11T05:41:06.019070+00:00'
+[2024-06-11T05:41:06.701+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-11T05:41:06.717+0000] {base.py:84} INFO - Using connection ID 'invoices' for task execution.
+[2024-06-11T05:41:06.720+0000] {python.py:237} INFO - Done. Returned value was: ['/opt/***/dags/invoices/sample1.json', '/opt/***/dags/invoices/sample2.json']
+[2024-06-11T05:41:06.721+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-11T05:41:06.729+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 474, in _execute_task
+    raise AirflowException(
+airflow.exceptions.AirflowException: Returned output was type <class 'list'> expected dictionary for multiple_outputs
+[2024-06-11T05:41:06.731+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=hello_word, task_id=read_files_from_path, run_id=manual__2024-06-11T05:41:06.019070+00:00, execution_date=20240611T054106, start_date=20240611T054106, end_date=20240611T054106
+[2024-06-11T05:41:06.742+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 99 for task read_files_from_path (Returned output was type <class 'list'> expected dictionary for multiple_outputs; 1985)
+[2024-06-11T05:41:06.767+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-11T05:41:06.788+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-11T05:41:06.793+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
